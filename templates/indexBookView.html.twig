@@ -1,0 +1,16 @@
+
+{% extends 'base.html.twig' %}
+{% block  metatitle %}market+ accueil{% endblock %}
+{% block content %}
+    <!---je recupere le header dans le fichier base.html.twig--->
+    <!---je recuper les informatioon du fichier pagecontroller et jaffiche seulement les livre voulue--->
+<center><br><br><br><br><br>
+    <div id="center" ><h1>{{ books.title }}</h1></div>
+    <div id="center" ><p>{{ books.author }}</p></div>
+    <img height="540px" src="{{ books.image }}"/>
+</center>
+
+<div class="center-button">
+    <div class="button-2">panier</div>
+</div>
+{% endblock content %}

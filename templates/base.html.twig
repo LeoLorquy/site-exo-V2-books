@@ -1,0 +1,35 @@
+
+<html>
+<head>
+<title>profile</title>
+<meta charset="utf=8">
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+</head>
+<body>
+<div id="debut"></div>
+
+<nav>
+        <ul>
+                <a class="color-nav" href="{{ path('home') }}"><li>home</li></a>
+                <a class="color-nav" href="{{ path('books') }}"><li>achats</li></a>
+                <a class="color-nav" href="{{ path('books') }}"><li>contact</li></a>
+        </ul>
+</nav>
+
+{% block content %}{% endblock content %}
+
+
+<footer>
+
+        <div class="footer">
+                <nav class="footer2">
+                        <a class="color-nav" href=""><li>a propos</li></a>
+                        <a class="color-nav" href=""><li>qui sommes nous ?</li></a>
+                        <a class="color-nav" href=""><li>donateur</li></a>
+                        <a class="color-nav" href=""><li>nos livre</li></a>
+                </nav>
+        </div>
+
+</footer>
+</body>
+</html>
