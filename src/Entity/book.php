@@ -34,8 +34,28 @@ class book{
     * @ORM\Column(type="date")
      */
     private $publishedAt;
+}
 
+class author{
+    /**
+     * @ORM\Id()
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue()
+     */
+    private $id;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $firstName;
 
-    
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $deathDate;
 }
