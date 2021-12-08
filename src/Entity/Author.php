@@ -20,38 +20,55 @@ class Author
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private $firstName;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $description;
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $deathDate;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->title;
+        return $this->firstName;
     }
 
-    public function setTitle(string $title): self
+    public function setFirstName(string $firstName): self
     {
-        $this->title = $title;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getLastName(): ?string
     {
-        return $this->description;
+        return $this->lastName;
     }
 
-    public function setDescription(?string $description): self
+    public function setLastName(string $lastName): self
     {
-        $this->description = $description;
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getDeathDate(): ?\DateTimeInterface
+    {
+        return $this->deathDate;
+    }
+
+    public function setDeathDate(?\DateTimeInterface $deathDate): self
+    {
+        $this->deathDate = $deathDate;
 
         return $this;
     }

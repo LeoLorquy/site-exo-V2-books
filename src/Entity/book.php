@@ -34,28 +34,58 @@ class book{
     * @ORM\Column(type="date")
      */
     private $publishedAt;
-}
 
-class author{
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue()
-     */
-    private $id;
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $firstName;
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $lastName;
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $deathDate;
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getNbPages(): ?int
+    {
+        return $this->nbPages;
+    }
+
+    public function setNbPages(int $nbPages): self
+    {
+        $this->nbPages = $nbPages;
+
+        return $this;
+    }
+
+    public function getPublishedAt(): ?\DateTimeInterface
+    {
+        return $this->publishedAt;
+    }
+
+    public function setPublishedAt(\DateTimeInterface $publishedAt): self
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
 }
