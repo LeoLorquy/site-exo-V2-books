@@ -29,7 +29,7 @@ class BookController extends AbstractController
 
         $entityManager->persist($book);
         $entityManager->flush();
-        return $this->render("indexcreate.html.twig");
+        return $this->render("admin/indexcreate.html.twig");
     }
 
 
@@ -40,7 +40,7 @@ class BookController extends AbstractController
     {
         $book = $bookRepository->find($id);
     
-        return $this->render("indexBookView.html.twig", ["book" => $book]);
+        return $this->render("admin/indexBookView.html.twig", ["book" => $book]);
     }
 
     /**
@@ -49,7 +49,7 @@ class BookController extends AbstractController
     public function book(BookRepository $bookRepository) //j'integre mon id
     {
         $books = $bookRepository->findAll();
-        return $this->render("indexBooks.html.twig", ["books" => $books]);
+        return $this->render("admin/indexBooks.html.twig", ["books" => $books]);
     }
 
     /**
