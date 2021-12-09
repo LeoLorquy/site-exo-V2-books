@@ -2,15 +2,21 @@
 {% extends 'base.html.twig' %}
 {% block  metatitle %}market+ accueil{% endblock %}
 {% block content %}
-    <!---je recupere le header dans le fichier base.html.twig--->
-    <!---je recuper les informatioon du fichier pagecontroller et jaffiche seulement les livre voulue--->
-<center><br><br><br><br><br>
-    <div id="center" ><h1>{{ book.title }}</h1></div>
-    <div id="center" ><p>{{ book.author }}</p></div>
-    <img height="540px" src="{{ book.image }}"/>
-</center>
-
-<div class="center-button">
-    <div class="button-2">panier</div>
-</div>
+    <article class="book-detail">
+{#        <div class="book-image">#}
+{#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
+{#        </div>#}
+<br><br><br><br><br>
+        <div class="card-text">
+            <center><h2>{{ book.title }}</h2>
+            {% if book.author %}
+                <h3>{{ book.author.firstName }} {{ book.author.lastName }}</h3>
+            {% endif %}
+            <div class="date"></div>
+                <em>Date de publication : {{ book.publishedAt | date('d/m/y') }}</em>
+            </div>
+            </center>
+        </div>
+    </article>
+    <br><br><br><br>
 {% endblock content %}

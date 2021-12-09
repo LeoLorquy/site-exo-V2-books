@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** 
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass=BookRepository::class)
 */
-class book{
+class Book{
     /**
      * @ORM\Id()
      * @ORM\Column(type="integer")
@@ -31,14 +31,14 @@ class book{
     private $publishedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Author::class)
-     */
-    private $author;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Genre::class)
      */
     private $genre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
+     */
+    private $author;
 
     public function getId(): ?int
     {
@@ -86,13 +86,6 @@ class book{
         return $this->author;
     }
 
-    public function setAuthor(?author $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
     public function getGenre(): ?genre
     {
         return $this->genre;
@@ -101,6 +94,13 @@ class book{
     public function setGenre(?genre $genre): self
     {
         $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function setAuthor(?author $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

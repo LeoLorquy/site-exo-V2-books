@@ -17,13 +17,13 @@ class BookController extends AbstractController
 {
 
     /**
-     * @Route("/book/cree", name="bookcree")
+     * @Route("/admin/book/cree", name="bookcree")
      */
     public function createBook(EntityManagerInterface $entityManager)
     {
         $book = new Book();
-        $book->setTitle("Les thanatonautes");
-        $book->setAuthor("Bernard Werber");
+        $book->setTitle("star wars rebelion");
+        $book->setAuthor("lucas films");
         $book->setNbPages("700");
         $book->setPublishedAt(new \DateTime('1995-12-12'));
 
@@ -33,31 +33,27 @@ class BookController extends AbstractController
     }
 
 
-            /**
-            * @Route("/book/{id}", name="book")
-            */
-            public function articleShow($id)
-            {
-            // je cree une erreur qui affiche "cette page existe pas." si l'on utilise un id qui nexiste pas
-            if (!array_key_exists($id, $this->books)) {
-                throw $this->createNotFoundException('cette page existe pas.');
-            }
-        
-            return $this->render("indexBookView.html.twig", ["book" => $this->books[$id]]);
-        }
-
-        /**
-        * @Route("/books", name="books")
-        */
-        public function book($id, BookRepository $bookRepository) //j'integre mon id
-        {
-
-
-            return $this->render("indexBooks.html.twig", ["books" => $books]);
+    /**
+    * @Route("/book/{id}", name="book")
+    */
+    public function articleShow($id, BookRepository $bookRepository)
+    {
+        $book = $bookRepository->find($id);
+    
+        return $this->render("indexBookView.html.twig", ["book" => $book]);
     }
 
     /**
-     * @Route("/book/deleted/{id}", name="book_delete")
+    * @Route("/admin/books", name="books")
+    */
+    public function book(BookRepository $bookRepository) //j'integre mon id
+    {
+        $books = $bookRepository->findAll();
+        return $this->render("indexBooks.html.twig", ["books" => $books]);
+    }
+
+    /**
+     * @Route("/admin/book/deleted/{id}", name="book_delete")
      */
     public function bookDelete($id, BookRepository $bookRepository, EntityManagerInterface $entityManager)
     {
@@ -69,7 +65,7 @@ class BookController extends AbstractController
         $entityManager->flush();
 
         //je renvois l'utilisateur sur la page bookRemove pour l'informer de la supression du livre
-        return $this->render("bookRemove.html.twig");
+        return $this->RedirectToRoute("books");
     }
 
 }

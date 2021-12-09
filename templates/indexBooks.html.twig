@@ -6,10 +6,11 @@
 <!---je recuper les informatioon du fichier pagecontroller puis jaffiche tout--->
 <center><br><br><br><br><br>
 {% for book in books %}
-        <div id="center" ><h1>{{ book.setTitle }}</h1></div>
-        <div id="center" ><p>{{ book.author }}</p></div>
-        <!---<a href="{{ path('book', {'id': book.id}) }}">voir</a>--->
-        <a href="{{ path('book', {'id': book.id}) }}"><img class="radius-img" height="540px" src="{{ book.image }}"/></a><br><br><br>
+        <div id="center" ><h1>{{book.title}}</h1></div>
+        <div id="center" ><h1>{{book.author}}</h1></div>
+        <a href="{{ path('book', {'id': book.id }) }}">Voir Le Livre</a><br>
+        <a class="supp" href="{{ path('book_delete', {'id': book.id }) }}">Supprimer le Book</a>
+<br><br><br><br>        
 {% endfor %}
 </center>
 {% endblock content %}
